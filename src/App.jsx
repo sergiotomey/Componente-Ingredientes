@@ -6,7 +6,7 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    fetch("src/ingredientes.json")
+    fetch("/ingredientes.json")
       .then((response) => response.json())
       .then((data) => setIngredients(data.ingredientes))
       .catch((error) => console.error("Error fetching ingredients:", error));

@@ -3,28 +3,33 @@ import { useState } from "react";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 
 function TablaIngredientes({ cartArray, updateArray, ingredients }) {
+  // Estado para manejar el ingrediente seleccionado en el dropdown
   const [selectedIngredient, setSelectedIngredient] = useState("");
 
+  // Función para convertir el precio en formato de cadena a número
   const convertToNumber = (priceStr) => {
     return parseFloat(priceStr.replace(/[$,]/g, "").replace(",", "."));
   };
 
+  // Función para manejar el cambio en la cantidad de un ingrediente
   const handleAmountChange = (id, newAmount) => {
-    if (newAmount < 0) return;
+    if (newAmount < 0) return; // No permitir cantidades negativas
     if (isNaN(newAmount)) {
-      newAmount = 0;
+      newAmount = 0; // Si el valor no es un número, establecerlo a 0
     }
     const updatedCartArray = cartArray.map((ingredient) =>
       ingredient.id === id ? { ...ingredient, amount: newAmount } : ingredient
     );
-    updateArray(updatedCartArray);
+    updateArray(updatedCartArray); // Actualizar el array de ingredientes en el carrito
   };
 
+  // Función para eliminar un ingrediente del carrito
   const handleRemoveIngredient = (id) => {
     const updatedCartArray = cartArray.filter((item) => item.id !== id);
-    updateArray(updatedCartArray);
+    updateArray(updatedCartArray); // Actualizar el array de ingredientes en el carrito
   };
 
+  // Función para agregar un nuevo ingrediente al carrito
   const handleAddIngredient = () => {
     const ingredientToAdd = ingredients.find(
       (ingredient) => ingredient.id === selectedIngredient
@@ -32,13 +37,14 @@ function TablaIngredientes({ cartArray, updateArray, ingredients }) {
     if (ingredientToAdd) {
       const updatedCartArray = [
         ...cartArray,
-        { ...ingredientToAdd, amount: 1 },
+        { ...ingredientToAdd, amount: 1 }, // Establecer la cantidad inicial a 1
       ];
-      updateArray(updatedCartArray);
+      updateArray(updatedCartArray); // Actualizar el array de ingredientes en el carrito
     }
-    setSelectedIngredient("");
+    setSelectedIngredient(""); // Limpiar la selección del dropdown
   };
 
+  // Calcular el precio total de todos los ingredientes en el carrito
   const totalPrice = cartArray.reduce(
     (total, ingredient) =>
       total + convertToNumber(ingredient.precio) * ingredient.amount,
@@ -47,6 +53,7 @@ function TablaIngredientes({ cartArray, updateArray, ingredients }) {
 
   return (
     <div className="flex flex-col lg:flex-row p-5 space-y-5 lg:space-y-0 lg:space-x-5">
+      {/* Sección para agregar un nuevo ingrediente */}
       <div className="flex-1 bg-white shadow-md rounded-lg p-4">
         <label
           htmlFor="ingredient"
@@ -79,6 +86,7 @@ function TablaIngredientes({ cartArray, updateArray, ingredients }) {
         </div>
       </div>
 
+      {/* Sección que muestra la lista de ingredientes en el carrito */}
       <ul className="flex-1 bg-white shadow-md rounded-lg border border-gray-200 p-4 space-y-3">
         {cartArray.map((ingredient) => (
           <li
