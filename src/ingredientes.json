@@ -1,0 +1,49 @@
+{
+    "ingredientes":
+    [
+        {
+          "id": "1",
+          "nombre": "Harina 0000",
+          "unidad": "KG",
+          "precio": "$850"
+        },
+        {
+            "id": "2",
+            "nombre": "Azucar",
+            "unidad": "KG",
+            "precio": "$1,200"
+          },
+          {
+            "id": "3",
+            "nombre": "Manteca",
+            "unidad": "KG",
+            "precio": "$9,500"
+          },
+          {
+            "id": "4",
+            "nombre": "Huevos",
+            "unidad": "UN",
+            "precio": "$200"
+          },
+          {
+            "id": "5",
+            "nombre": "Limon",
+            "unidad": "KG",
+            "precio": "$900"
+          },
+          {
+            "id": "6",
+            "nombre": "Miel liquida",
+            "unidad": "KG",
+            "precio": "$2,200"
+          },
+          {
+            "id": "7",
+            "nombre": "Amapolas",
+            "unidad": "KG",
+            "precio": "$9,000"
+          }
+          
+      ]
+    }
+    
