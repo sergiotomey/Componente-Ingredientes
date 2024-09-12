@@ -95,6 +95,7 @@ function TablaIngredientes({ cartArray, updateArray, ingredients }) {
           >
             <div className="flex items-center space-x-3">
               <span className="font-medium">{ingredient.nombre}</span>
+              <span className="flex items-center justify-between p-3 border border-gray-200 rounded-md shadow-sm">{`Precio por 1 ${ingredient.unidad} = ${ingredient.precio} `}</span>
               <button
                 onClick={() => handleRemoveIngredient(ingredient.id)}
                 className="text-red-500 hover:text-red-600"
